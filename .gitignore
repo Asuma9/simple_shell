@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But do not ignore these files/extensions
+!*.c
+!*.h
+!*.gitignore
+!AUTHORS
