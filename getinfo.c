@@ -66,7 +66,7 @@ void free_info(info_t *info, int all_fields)
 			free_list(&(info->alias));
 		free_argv(info->environ);
 			info->environ = NULL;
-		free_buf((void **)info->cmd_buff);
+		free_buff((void **)info->cmd_buff);
 		if (info->r_filedes > 2)
 			close(info->r_filedes);
 		_putchar(BUF_FLUSH);

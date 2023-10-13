@@ -91,15 +91,15 @@ ssize_t get_input(info_t *info)
 }
 
 /**
- * read_buf - reads a buffer
+ * read_buff - reads a buffer
  * @info: info structure address (ptr to). Used to maintain
  *        constant function prototype
  * @buff: pointer to buffer
- * @i: size of read bytes
+ * @size: size of read bytes
  *
  * Return: bytes read
  */
-ssize_t read_buf(info_t *info, char *buff, size_t *size)
+ssize_t read_buff(info_t *info, char *buff, size_t *size)
 {
 	ssize_t bytes_read = 0;
 
@@ -134,7 +134,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	if (i == len)
 		i = len = 0;
 
-	r = read_buf(info, buff, &len);
+	r = read_buff(info, buff, &len);
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 

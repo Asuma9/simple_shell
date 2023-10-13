@@ -141,10 +141,10 @@ char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
 /* fname_string1.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
+char *_strcpy(char *, char *);
+char *_strdup(const char *);
 
 /* fname_exits.c */
 char *_strncpy(char *, char *, int);
@@ -156,25 +156,25 @@ char **_strtow(char *, char *);
 char **_strtow1(char *, char);
 
 /* fname_realloc.c */
-char *_memset(char *, char, unsigned int);
 void free_argv(char **);
 void *_realloc(void *, unsigned int, unsigned int);
+char *_memset(char *, char, unsigned int);
 
 /* mem management fname_memory.c */
-int free_buf(void **);
+int free_buff(void **);
 
 /* fname_atoi.c */
-int interactive(info_t *);
-int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
+int interactive(info_t *);
+int is_delim(char, char *);
 
 /* fname_errors1.c */
-int _erratoi(char *);
+void remove_comments(char *);
 void print_error(info_t *, char *);
+int _erratoi(char *);
 int print_dec(int, int);
 char *convert_num(long int, int, int);
-void remove_comments(char *);
 
 /* fname_builtin.c */
 int _myexit(info_t *);
@@ -186,11 +186,12 @@ int _myhistory(info_t *);
 int _myalias(info_t *);
 
 /* fname_getline.c */
+void sigintHandler(int);
+int _getline(info_t *, char **, size_t *);
 ssize_t input_handle(info_t *, char **, size_t *);
 ssize_t get_input(info_t *);
-ssize_t read_buf(info_t *, char *, size_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
+ssize_t read_buff(info_t *, char *, size_t *);
+
 
 /* fname_getinfo.c */
 void clear_info(info_t *);
@@ -198,41 +199,41 @@ void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
 /* fname_environ.c */
-char *_getenv(info_t *, const char *);
 int _myenv(info_t *);
 int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
+char *_getenv(info_t *, const char *);
 
 /* fname_getenv.c */
-char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
+char **get_environ(info_t *);
 
 /* fname_history.c */
-char *get_hist_file(info_t *info);
 int write_history(info_t *info);
 int read_history(info_t *info);
 int build_hist_list(info_t *info, char *buf, int linecount);
 int renumber_hist(info_t *info);
+char *get_hist_file(info_t *info);
 
 /* fname_lists.c */
+void free_list(list_t **);
+int delete_node_n(list_t **, unsigned int);
 list_t *add_node_head(list_t **, const char *, int);
 list_t *add_node_tail(list_t **, const char *, int);
 size_t print_list_str(const list_t *);
-int delete_node_n(list_t **, unsigned int);
-void free_list(list_t **);
 
 /* fname_lists1.c */
-size_t list_len(const list_t *);
 char **list_to_strings(list_t *);
+size_t list_len(const list_t *);
 size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
 /* fname_vars.c */
-int is_chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
+int is_chain(info_t *, char *, size_t *);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
