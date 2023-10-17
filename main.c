@@ -61,7 +61,7 @@ int read_and_execute(void)
 	size_t len = 0;
 	ssize_t nread, len_without_nulls;
 	char **argv = NULL;
-	int exit_status;
+	int exit_status, i;
 
 	print_prompt();
 	nread = getline(&line, &len, stdin);
@@ -85,11 +85,16 @@ int read_and_execute(void)
 
 	if (!argv[0] || argv[0][0] == '\0')
 	{
+		free(line);
 		free(argv);
 		return (0);
 	}
 	exit_status = handle_command(argv);
-
+	for (i = 0; argv[i]; i++)
+	{
+		free(argv[i]);
+	}
+	free(argv);
 	return (exit_status);
 }
 /**

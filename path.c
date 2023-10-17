@@ -87,14 +87,25 @@ char *find_command_in_path(char *command)
 
 		if (stat(full_path, &st) == 0 && (st.st_mode & S_IXUSR))
 		{
+			free_tokenized_array(path_directories);
 			free(path_copy);
-			free(path_directories);
 			return (full_path);
 		}
 		free(full_path);
 		idx++;
 	}
+	free_tokenized_array(path_directories);
 	free(path_copy);
-	free(path_directories);
 	return (NULL);
+}
+/**
+ * free_tokenized_array - Frees a tokenized array.
+ * @array: The tokenized array.
+ */
+void free_tokenized_array(char **array)
+{
+	if (!array)
+		return;
+	free(array);
+
 }
