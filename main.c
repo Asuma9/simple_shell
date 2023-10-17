@@ -49,7 +49,6 @@ int handle_command(char **argv)
 	free(command_path);
 	return (0);
 }
-
 /**
  * read_and_execute - Reads a line and executes the command
  *
@@ -58,22 +57,18 @@ int handle_command(char **argv)
 int read_and_execute(void)
 {
 	char *line = NULL;
-	size_t len = 0;
-	ssize_t nread, len_without_nulls;
+	size_t len_without_nulls;
 	char **argv = NULL;
 	int exit_status, i;
 
 	print_prompt();
-	nread = getline(&line, &len, stdin);
-	if (nread == -1)
-	{
-		free(line);
+	line = custom_getline();
+	if (!line)
 		return (-1);
-	}
-	len_without_nulls = strcspn(line, "\0");
 
+	len_without_nulls = strcspn(line, "\0");
 	line[len_without_nulls] = '\0';
-	line[nread - 1] = '\0';
+
 	if (strcmp(line, "exit") == 0 || strcmp(line, "env") == 0)
 	{
 		if (strcmp(line, "env") == 0)

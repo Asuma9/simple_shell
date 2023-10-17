@@ -10,8 +10,8 @@
 char *custom_getline(void)
 {
 	char *buffer = malloc(sizeof(char) * BUFFER_SIZE);
-	char c;
-	int i = 0;
+	int c;
+	size_t i = 0;
 
 	if (!buffer)
 		return (NULL);
@@ -29,10 +29,15 @@ char *custom_getline(void)
 			buffer = new_buffer;
 		}
 		c = getchar();
-		if (c == '\n' || c == EOF)
+		if (c == EOF || c == '\n')
 			break;
 		buffer[i++] = c;
 	}
 	buffer[i] = '\0';
+	if (i == 0) /* buffer is empty */
+	{
+		free(buffer);
+		return (NULL);
+	}
 	return (buffer);
 }
