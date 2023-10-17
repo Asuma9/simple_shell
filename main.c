@@ -55,7 +55,6 @@ int handle_command(char **argv)
  *
  * Return: The exit status of the command
  */
-
 int read_and_execute(void)
 {
 	char *line = NULL;
@@ -93,7 +92,6 @@ int read_and_execute(void)
 
 	return (exit_status);
 }
-
 /**
  * main - Main function for the shell
  *

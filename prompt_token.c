@@ -8,7 +8,10 @@
 void print_prompt(void)
 {
 	/* This was causing errors, removed it temporarily */
-	write(STDOUT_FILENO, "$", 1);
+	if (isatty(STDIN_FILENO))
+	{
+		write(STDOUT_FILENO, "$", 1);
+	}
 }
 
 /**

@@ -18,6 +18,7 @@ char *find_command_in_path(char *command);
 void print_env(void);
 char *create_full_path(const char *dir, const char *command);
 char *custom_strdup(const char *src);
+char *custom_getline(void);
 
 
 #endif /* SHELL_H */
