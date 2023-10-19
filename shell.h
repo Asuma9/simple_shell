@@ -26,6 +26,16 @@ void *_strcpy(char *dest, const char *src);
 void *_realloc(void *ptr, size_t old_size, size_t new_size);
 void reassign_lineptr(char **lineptr, size_t *line_size, char *buffer, size_t a);
 ssize_t _getline(void **lineptr, size_t *line_size);
+int shellby_exit(char **args);
+
+/* Error handle*/
+int _eputchar(char c);
+void _eputs(char *str);
+
+/* string handles*/
+int _strcmp(char *s1, char *s2);
 void *_strncpy(char *dest, const char *src, size_t size);
+
+
 
 #endif /* SHELL_H */

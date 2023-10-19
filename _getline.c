@@ -81,7 +81,7 @@ ssize_t _getline(void **lineptr, size_t *line_size)
 		if (line_len + 1 >= max_line_len)/* Reading more input dynamically*/
 		{
 			max_line_len *= 2; /* doubling max length*/
-			*lineptr = (char *)_realloc(*lineptr, *line_size, max_line_len);
+			*lineptr = (char *)_realloc((void **)lineptr, *line_size, max_line_len);
 			if (*lineptr == NULL)
 				return (-1);
 			*line_size = max_line_len;
