@@ -4,14 +4,20 @@
  *          dest buffer pointed to
  * @src: pointer to source string
  * @dest: pointer to destination
+ * @size: length of chars copied
  * Return: pointer to destination
 */
-void *_strcpy(char *dest, const char *src)
+void *_strncpy(char *dest, const char *src, size_t size)
 {
     size_t i;
 
-    for (i = 0; src[i] != '\0'; i++)
+    for (i = 0; i < size; i++)
+    {
         dest[i] = src[i];
-    dest[i] = '\0';
+        if (src[i] == '\0')
+        {
+            break;
+        }
+    }
     return (dest);
 }

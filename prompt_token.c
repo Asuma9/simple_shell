@@ -10,7 +10,7 @@ void print_prompt(void)
 	/* This was causing errors, removed it temporarily */
 	if (isatty(STDIN_FILENO))
 	{
-		write(STDOUT_FILENO, "$ ", 1);
+		write(STDOUT_FILENO, "$ ", 2);
 	}
 }
 
